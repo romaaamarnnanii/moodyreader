@@ -82,7 +82,9 @@
   .hero-visual{display:flex;flex-direction:column;align-items:center}
   .moody-hero{width:min(230px,62%);position:relative;z-index:3;margin-bottom:-26px;filter:drop-shadow(0 16px 22px rgba(0,0,0,.5))}
   .moody-hero svg{width:100%;height:auto;display:block}
-  .speech{position:absolute;top:6px;right:-6px;font-family:var(--fy);font-weight:600;font-size:13px;color:var(--ink);background:var(--sun);border:2px solid var(--ink);border-radius:14px 14px 14px 3px;padding:6px 11px;box-shadow:3px 3px 0 var(--ink);z-index:5;rotate:3deg}
+  .moody-note{position:absolute;top:-34px;left:2px;z-index:6;display:flex;flex-direction:column;align-items:flex-start;gap:0;pointer-events:none}
+  .moody-note .lbl{font-family:var(--fy);font-weight:700;font-size:15px;color:var(--ink);background:var(--sun);border:2px solid var(--ink);border-radius:12px 12px 12px 3px;padding:5px 12px;box-shadow:3px 3px 0 var(--ink);rotate:-5deg;white-space:nowrap}
+  .moody-note .arrow{width:48px;height:auto;margin-left:30px;margin-top:-1px}
   .reccard{background:linear-gradient(180deg,var(--cream2),var(--cream));border:2.5px solid var(--ink);border-radius:20px;box-shadow:12px 12px 0 rgba(108,59,255,.35);padding:24px 20px 20px;color:var(--paper-ink);width:min(380px,100%);position:relative}
   .rc-top{display:flex;gap:16px}
   .rc-cover{flex:0 0 82px;height:120px;border-radius:7px;border:2px solid var(--ink);background:linear-gradient(150deg,var(--grape-deep),#B23A2E);box-shadow:3px 3px 0 var(--ink);position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:9px;overflow:hidden}
@@ -218,7 +220,7 @@
     <div class="hero-visual">
       <div style="position:relative">
         <div id="moodyHero" class="moody-hero" aria-hidden="true"></div>
-        <span class="speech">psst… read this one 👇</span>
+        <span class="moody-note"><span class="lbl">she's <b>Moody</b> 👋</span><svg class="arrow" viewBox="0 0 50 48" aria-hidden="true"><path d="M9 5 C 3 18, 21 21, 15 38" fill="none" stroke="var(--gold)" stroke-width="3.4" stroke-linecap="round"/><path d="M15 38 l-7 -6 M15 38 l7 -3" fill="none" stroke="var(--gold)" stroke-width="3.4" stroke-linecap="round"/></svg></span>
       </div>
       <div class="reccard">
         <div class="rc-top">
