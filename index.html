@@ -190,12 +190,12 @@
       <span class="eyebrow">📖 book discovery, in the open</span>
       <h1>Book recs that <span class="it">actually</span> get you.</h1>
       <p class="sub">Tuned to your taste <em>and</em> your mood — and every pick tells you <span class="it">why</span>. Meet Moody: she reads the vibe, not just the genre.</p>
-      <form class="signup" id="join-form" novalidate>
+      <form class="signup" id="join-form" action="https://buttondown.com/api/emails/embed-subscribe/moodyreader" method="post" target="bd-sink" novalidate>
         <label for="email-hero" style="position:absolute;left:-9999px">Email address</label>
-        <input id="email-hero" type="email" inputmode="email" autocomplete="email" placeholder="you@email.com" required>
+        <input id="email-hero" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@email.com" required>
         <button class="btn" type="submit">Get early access</button>
       </form>
-      <p class="micro" id="micro">✦ Free to join · No spam, ever · Founding readers get a badge</p>
+      <p class="micro" id="micro">✦ Free to join · <b style="color:var(--gold)">Only 100 founding spots</b> · No spam, ever</p>
       <div class="ok" id="ok-msg" role="status" aria-live="polite">
         <strong>You're on the list! 🎉</strong><br>We'll email <span id="ok-email">you</span> the moment early access opens.
       </div>
@@ -290,10 +290,10 @@
       <div id="moodyFinal" class="moody-final" aria-hidden="true"></div>
       <span class="holo">✦ founding reader ✦</span>
       <h2>Be a founding reader.</h2>
-      <p class="lead">We're building moodyreader in the open. Join the waitlist for first access, a founder badge, and a say in what Moody learns next.</p>
-      <form class="signup" id="join-form-2" novalidate>
+      <p class="lead">We're building moodyreader in the open. We're only taking <b style="color:var(--grape-deep)">100 founding readers</b> to start — first come, first read — with early access, a founder badge, and a say in what Moody learns next.</p>
+      <form class="signup" id="join-form-2" action="https://buttondown.com/api/emails/embed-subscribe/moodyreader" method="post" target="bd-sink" novalidate>
         <label for="email-foot" style="position:absolute;left:-9999px">Email address</label>
-        <input id="email-foot" type="email" inputmode="email" autocomplete="email" placeholder="you@email.com" required>
+        <input id="email-foot" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@email.com" required>
         <button class="btn" type="submit">Claim my spot</button>
       </form>
       <p class="micro" id="micro2">✦ No spam · Unsubscribe anytime · Your shelves stay yours</p>
@@ -304,12 +304,15 @@
   </div>
 </section>
 
+<iframe name="bd-sink" title="subscribe" aria-hidden="true" tabindex="-1" style="position:absolute;width:0;height:0;border:0;left:-9999px"></iframe>
+
 <footer>
   <div class="wrap foot">
     <div>
       <div class="logo" aria-label="moodyreader">m<span class="lo d1"></span><span class="lo d2"></span>dy<span class="tail">reader</span></div>
       <p class="manifesto">For people who take books seriously, not solemnly.</p>
       <p class="disc">A concept in progress — not affiliated with Goodreads, StoryGraph, or Fable. Book data via open sources like Open Library.</p>
+      <p class="disc" style="margin-top:8px"><a href="https://buttondown.com/refer/moodyreader" target="_blank" rel="noopener" style="color:var(--muted);text-decoration:underline">Waitlist powered by Buttondown ↗</a></p>
     </div>
     <div class="foot-links"><a href="#how">How it works</a><a href="#features">Features</a><a href="#join">Waitlist</a></div>
   </div>
@@ -433,11 +436,11 @@
     var form=document.getElementById(f); if(!form)return;
     var input=document.getElementById(i),ok=document.getElementById(o),micro=m?document.getElementById(m):null;
     form.addEventListener("submit",function(e){
-      e.preventDefault();
       var v=(input.value||"").trim();
-      if(!valid(v)){input.focus();input.style.borderColor="var(--coral)";if(micro){micro.textContent="Hmm, that email looks off — mind checking it?";micro.style.color="var(--coral)";}return;}
+      if(!valid(v)){e.preventDefault();input.focus();input.style.borderColor="var(--coral)";if(micro){micro.textContent="Hmm, that email looks off — mind checking it?";micro.style.color="var(--coral)";}return;}
+      // valid → let the POST reach Buttondown (via hidden iframe), then swap to the success UI
       save(v);var oe=document.getElementById("ok-email");if(oe)oe.textContent=v;
-      form.hidden=true;if(micro)micro.hidden=true;ok.style.display="block";
+      setTimeout(function(){form.hidden=true;if(micro)micro.hidden=true;ok.style.display="block";},80);
     });
     input.addEventListener("input",function(){input.style.borderColor="var(--ink)";});
   }
