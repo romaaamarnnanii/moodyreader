@@ -129,6 +129,13 @@
   .feat h3{font-family:var(--fx);font-weight:800;font-size:19px;margin-top:14px;color:var(--cream)}
   .feat p{margin-top:7px;color:var(--text-dim);font-size:15px;line-height:1.45}
 
+  /* basics */
+  .basics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:38px}
+  .basic{background:var(--cream2);border:1.5px solid var(--cream-edge);border-radius:14px;padding:16px}
+  .basic .bi{font-size:22px;line-height:1}
+  .basic h3{font-family:var(--fx);font-weight:800;font-size:15px;margin-top:9px;color:var(--paper-ink)}
+  .basic p{margin-top:4px;color:var(--paper-soft);font-size:13.5px;line-height:1.4}
+
   /* mood band */
   .moodband{background:linear-gradient(160deg,var(--grape-deep),#4A1FC0);border-block:2px solid var(--ink)}
   .moodband .kick{color:var(--sun)} .moodband h2{color:#fff} .moodband .lead{color:color-mix(in srgb,#fff 82%,transparent)}
@@ -179,8 +186,8 @@
   .foot .disc{font-family:var(--fy);color:var(--muted);font-size:12.5px;margin-top:12px;max-width:52ch;font-weight:500}
   .foot-links{display:flex;gap:24px;font-family:var(--fx);font-weight:800;font-size:14px;color:var(--text-dim);flex-wrap:wrap}
 
-  @media (max-width:860px){ .hero-grid{grid-template-columns:1fr} .vs,.steps,.feats{grid-template-columns:1fr 1fr} .hero-visual{margin-top:14px} }
-  @media (max-width:560px){ body{font-size:17px} .vs,.steps,.feats{grid-template-columns:1fr} }
+  @media (max-width:860px){ .hero-grid{grid-template-columns:1fr} .vs,.steps,.feats,.basics{grid-template-columns:1fr 1fr} .hero-visual{margin-top:14px} }
+  @media (max-width:560px){ body{font-size:17px} .vs,.steps,.feats{grid-template-columns:1fr} .basics{grid-template-columns:1fr 1fr} }
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 
@@ -277,6 +284,24 @@
       <div class="feat"><div class="ic" style="background:color-mix(in srgb,var(--mint) 26%,var(--panel))">💬</div><h3>A feed worth opening</h3><p>Friends, reviews, and clubs — with real moderation, so no more review-bomb pile-ons.</p></div>
       <div class="feat"><div class="ic" style="background:color-mix(in srgb,var(--gold) 26%,var(--panel))">⚠️</div><h3>Content warnings you control</h3><p>Community-sourced, filterable, honest. Know what you're walking into — or turn it all off.</p></div>
       <div class="feat"><div class="ic" style="background:color-mix(in srgb,var(--grape) 24%,var(--panel))">⚡</div><h3>Fast. Genuinely fast.</h3><p>Pages that load before you blink — on the web today, native apps soon. Speed is a feature.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band paper" id="basics">
+  <div class="wrap">
+    <span class="kick">the basics, covered</span>
+    <h2>Plus everything a reading app <span class="it">should do.</span></h2>
+    <p class="lead">The smart, explainable recs are why you'd switch. But moodyreader is a full reading app — everything you already expect is here too, just faster and prettier.</p>
+    <div class="basics">
+      <div class="basic"><div class="bi">📈</div><h3>Track your progress</h3><p>Currently-reading %, page counts, and a reading log that remembers it all.</p></div>
+      <div class="basic"><div class="bi">📚</div><h3>Shelves &amp; wishlist</h3><p>Owned, TBR, DNF — or your own shelves. Star what you want to read next.</p></div>
+      <div class="basic"><div class="bi">👥</div><h3>Virtual book clubs</h3><p>Start or join clubs and read together, chapter by chapter.</p></div>
+      <div class="basic"><div class="bi">🎯</div><h3>Goals &amp; stats</h3><p>A yearly challenge, streaks, and lovely charts of your reading life.</p></div>
+      <div class="basic"><div class="bi">✍️</div><h3>Reviews &amp; ratings</h3><p>Half-star ratings, mood tags, and reviews actually worth reading.</p></div>
+      <div class="basic"><div class="bi">🔄</div><h3>Bring your library</h3><p>Import your Goodreads or StoryGraph shelves in one move.</p></div>
+      <div class="basic"><div class="bi">🔔</div><h3>Friends &amp; activity</h3><p>Follow readers, see what they love, trade recommendations.</p></div>
+      <div class="basic"><div class="bi">📱</div><h3>Web now, app soon</h3><p>Use it in your browser today; native iOS &amp; Android on the way.</p></div>
     </div>
   </div>
 </section>
