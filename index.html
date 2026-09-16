@@ -1,0 +1,448 @@
+<title>moodyreader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500;1,6..72,600&family=Fredoka:wght@500;600;700&display=swap">
+<style>
+  :root{
+    --ground:#150E29; --ground2:#1D1438; --panel:#251B43; --panel2:#2E2352; --edge:#3A2E5C;
+    --cream:#F4EAD2; --cream2:#FBF3E1; --cream-edge:#E3D2AC; --paper-ink:#241813; --paper-soft:#6A5A46;
+    --ink:#191026;
+    --text:#EFE6D6; --text-dim:#BEB2D4; --muted:#8B7EA8;
+    --grape:#8B6BFF; --grape-deep:#6C3BFF; --grape-bright:#A88BFF;
+    --gold:#E7B14C; --gold-deep:#C9962F; --coral:#FF6B54; --sun:#FFC531; --mint:#33D2A4;
+    --maxw:1120px;
+    --fx:"Bricolage Grotesque",system-ui,sans-serif;
+    --serif:"Newsreader",Georgia,"Times New Roman",serif;
+    --fy:"Fredoka",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    color:var(--text);font-family:var(--serif);font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+    background:
+      radial-gradient(1000px 460px at 82% -6%, color-mix(in srgb,var(--grape) 24%,transparent), transparent 60%),
+      radial-gradient(720px 420px at 4% 12%, color-mix(in srgb,var(--gold) 10%,transparent), transparent 58%),
+      var(--ground);
+  }
+  .wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:20px}
+  h1,h2,h3{margin:0;line-height:1.03;text-wrap:balance;font-family:var(--fx);font-weight:800;letter-spacing:-.025em}
+  p{margin:0}
+  a{color:inherit;text-decoration:none}
+  .it{font-family:var(--serif);font-style:italic;font-weight:500}
+  h1 .it,h2 .it{font-weight:500}
+  :focus-visible{outline:3px solid var(--grape-bright);outline-offset:3px;border-radius:8px}
+
+  /* mood-dot logo */
+  .logo{font-family:var(--fx);font-weight:800;letter-spacing:-.045em;line-height:1;display:inline-flex;align-items:center;color:var(--cream);white-space:nowrap}
+  .logo .lo{display:inline-block;width:.56em;height:.56em;border-radius:50%;margin:0 .035em;border:.06em solid var(--ink);box-shadow:.05em .05em 0 rgba(0,0,0,.45);translate:0 .03em}
+  .logo .d1{background:var(--grape)} .logo .d2{background:var(--coral)} .logo .tail{color:var(--grape-bright)}
+  @keyframes mc1{0%,100%{background:var(--grape)}25%{background:var(--coral)}50%{background:var(--sun)}75%{background:var(--mint)}}
+  @keyframes mc2{0%,100%{background:var(--coral)}25%{background:var(--sun)}50%{background:var(--mint)}75%{background:var(--grape)}}
+  @media (prefers-reduced-motion:no-preference){.logo .d1{animation:mc1 6s steps(1,end) infinite}.logo .d2{animation:mc2 6s steps(1,end) infinite}}
+
+  /* nav */
+  nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:60;background:color-mix(in srgb,var(--ground) 80%,transparent);backdrop-filter:blur(12px) saturate(1.3);border-bottom:1px solid var(--edge)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:66px;gap:14px}
+  .nav-in .logo{font-size:23px}
+  .btn{font-family:var(--fx);font-weight:800;font-size:15px;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 20px;border-radius:999px;border:2px solid var(--ink);background:var(--grape-deep);color:#fff;cursor:pointer;box-shadow:3px 3px 0 var(--ink);transition:transform .12s ease,box-shadow .12s ease}
+  .btn:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink)}
+  .btn:active{transform:translate(1px,1px);box-shadow:1px 1px 0 var(--ink)}
+  .btn.gold{background:var(--gold);color:var(--ink)}
+
+  section{position:relative}
+  .band{padding-block:clamp(46px,7vw,88px)}
+  .kick{font-family:var(--fx);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--gold)}
+  h2{font-size:clamp(30px,4.6vw,50px)}
+  .lead{color:var(--text-dim);font-size:clamp(17px,1.8vw,20px);max-width:54ch;margin-top:14px}
+
+  .paper{background:linear-gradient(180deg,var(--cream2),var(--cream));color:var(--paper-ink);border-block:2px solid var(--ink)}
+  .paper .kick{color:var(--gold-deep)} .paper h2{color:var(--paper-ink)} .paper .lead{color:var(--paper-soft)}
+
+  /* hero */
+  .hero{padding-block:clamp(30px,5vw,60px)}
+  .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(28px,5vw,52px);align-items:center}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--fx);font-weight:800;font-size:12.5px;text-transform:uppercase;letter-spacing:.13em;color:var(--gold);background:color-mix(in srgb,var(--gold) 12%,transparent);border:1px solid color-mix(in srgb,var(--gold) 45%,transparent);border-radius:999px;padding:7px 14px;margin-bottom:22px}
+  h1{font-size:clamp(44px,6.6vw,78px);letter-spacing:-.03em} h1 .it{color:var(--gold)}
+  .hero p.sub{margin-top:20px;font-size:clamp(18px,2vw,21px);color:var(--text-dim);max-width:36ch}
+  .signup{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px;max-width:450px}
+  .signup input{flex:1 1 210px;min-width:0;font-family:var(--serif);font-weight:500;font-size:17px;padding:13px 18px;border-radius:999px;border:2px solid var(--ink);background:var(--cream2);color:var(--ink)}
+  .signup input::placeholder{color:var(--paper-soft)}
+  .micro{font-family:var(--fy);margin-top:12px;font-size:13.5px;font-weight:600;color:var(--muted);display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+  .ok{display:none;margin-top:24px;padding:16px 18px;border-radius:14px;border:2px solid var(--mint);background:color-mix(in srgb,var(--mint) 15%,var(--panel));font-weight:500;max-width:450px}
+  .ok strong{font-family:var(--fx);font-weight:800}
+
+  /* hero visual — Moody prominent */
+  .hero-visual{display:flex;flex-direction:column;align-items:center}
+  .moody-hero{width:min(230px,62%);position:relative;z-index:3;margin-bottom:-26px;filter:drop-shadow(0 16px 22px rgba(0,0,0,.5))}
+  .moody-hero svg{width:100%;height:auto;display:block}
+  .speech{position:absolute;top:6px;right:-6px;font-family:var(--fy);font-weight:600;font-size:13px;color:var(--ink);background:var(--sun);border:2px solid var(--ink);border-radius:14px 14px 14px 3px;padding:6px 11px;box-shadow:3px 3px 0 var(--ink);z-index:5;rotate:3deg}
+  .reccard{background:linear-gradient(180deg,var(--cream2),var(--cream));border:2.5px solid var(--ink);border-radius:20px;box-shadow:12px 12px 0 rgba(108,59,255,.35);padding:24px 20px 20px;color:var(--paper-ink);width:min(380px,100%);position:relative}
+  .rc-top{display:flex;gap:16px}
+  .rc-cover{flex:0 0 82px;height:120px;border-radius:7px;border:2px solid var(--ink);background:linear-gradient(150deg,var(--grape-deep),#B23A2E);box-shadow:3px 3px 0 var(--ink);position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:9px;overflow:hidden}
+  .rc-cover::before{content:"";position:absolute;left:9px;top:0;bottom:0;width:2px;background:rgba(255,255,255,.25)}
+  .rc-cover .band2{position:absolute;left:0;right:0;top:32px;height:8px;background:var(--gold)}
+  .rc-cover .ct{font-family:var(--serif);font-style:italic;font-weight:600;color:#fff;font-size:14px;line-height:1.05;text-shadow:0 1px 5px rgba(0,0,0,.4);position:relative}
+  .rc-meta .bt{font-family:var(--serif);font-weight:600;font-size:21px;line-height:1.05}
+  .rc-meta .ba{color:var(--paper-soft);font-weight:500;font-size:14px;margin-top:2px}
+  .rc-stars{margin-top:8px;color:var(--gold-deep);font-size:14px;letter-spacing:1px}
+  .rc-stars b{color:var(--paper-ink);font-family:var(--fx);font-size:12.5px;margin-left:5px}
+  .rc-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+  .rc-chip{font-family:var(--fy);font-weight:600;font-size:12px;padding:4px 10px;border-radius:999px;border:1.5px solid var(--ink);background:var(--cream2)}
+  .rc-match{display:flex;align-items:center;gap:11px;margin-top:14px;padding-top:14px;border-top:1.5px dashed var(--cream-edge)}
+  .rc-dot{width:14px;height:14px;border-radius:50%;border:2px solid var(--ink);flex:0 0 auto}
+  .rc-match .mt{font-family:var(--fx);font-weight:800;font-size:14px}
+  .rc-match .ms{font-family:var(--fy);color:var(--paper-soft);font-size:12.5px;font-weight:600}
+  .rc-why{margin-top:14px;background:color-mix(in srgb,var(--gold) 14%,var(--cream2));border:1.5px solid var(--cream-edge);border-radius:12px;padding:12px 14px}
+  .rc-why h4{margin:0 0 9px;font-family:var(--fx);font-weight:800;font-size:11.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--gold-deep)}
+  .rc-why ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+  .rc-why li{display:flex;gap:9px;align-items:flex-start;font-size:14.5px;font-weight:500;line-height:1.35}
+  .rc-why li b{font-weight:600;color:var(--grape-deep)}
+  .rc-why .dt{flex:0 0 auto;width:9px;height:9px;border-radius:50%;margin-top:6px;border:1.5px solid var(--ink)}
+
+  /* problem */
+  .vs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+  .v{background:var(--panel);border:1px solid var(--edge);border-radius:18px;padding:22px}
+  .v .n{font-family:var(--fx);font-weight:800;font-size:19px;color:var(--cream)}
+  .v .g{color:var(--gold);font-family:var(--fx);font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:.08em;margin-top:12px}
+  .v p{color:var(--text-dim);font-size:15px;margin-top:6px;line-height:1.45}
+
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:42px}
+  .step{background:var(--cream2);border:2px solid var(--ink);border-radius:18px;padding:24px 20px;box-shadow:6px 6px 0 color-mix(in srgb,var(--grape) 45%,var(--cream));position:relative}
+  .step .dot{position:absolute;top:-16px;left:20px;width:36px;height:36px;border-radius:50%;border:2px solid var(--ink);box-shadow:2px 2px 0 var(--ink)}
+  .step h3{font-family:var(--fx);font-weight:800;font-size:20px;margin-top:10px;color:var(--paper-ink)}
+  .step p{margin-top:8px;color:var(--paper-soft);font-size:15px}
+  .step .tag{font-family:var(--fy);margin-top:12px;display:inline-block;font-weight:600;font-size:12px;color:var(--grape-deep);background:color-mix(in srgb,var(--grape) 16%,var(--cream2));border:1px solid color-mix(in srgb,var(--grape) 40%,transparent);border-radius:8px;padding:4px 10px}
+
+  /* features */
+  .feats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+  .feat{background:var(--panel);border:1px solid var(--edge);border-radius:18px;padding:22px;transition:transform .14s ease,border-color .14s ease}
+  .feat:hover{transform:translateY(-4px);border-color:var(--grape)}
+  .feat .ic{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;font-size:23px;border:2px solid var(--ink)}
+  .feat h3{font-family:var(--fx);font-weight:800;font-size:19px;margin-top:14px;color:var(--cream)}
+  .feat p{margin-top:7px;color:var(--text-dim);font-size:15px;line-height:1.45}
+
+  /* mood band */
+  .moodband{background:linear-gradient(160deg,var(--grape-deep),#4A1FC0);border-block:2px solid var(--ink)}
+  .moodband .kick{color:var(--sun)} .moodband h2{color:#fff} .moodband .lead{color:color-mix(in srgb,#fff 82%,transparent)}
+  .cloud{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .mc{font-family:var(--fy);font-weight:600;font-size:clamp(15px,1.9vw,18px);padding:8px 16px;border-radius:999px;border:2px solid var(--ink);background:var(--cream2);color:var(--ink);box-shadow:3px 3px 0 var(--ink);display:inline-flex;align-items:center;gap:8px;cursor:pointer;transition:transform .12s ease,box-shadow .12s ease}
+  .mc:hover,.mc:focus-visible{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink)}
+  .mc i{width:11px;height:11px;border-radius:50%;border:1.5px solid var(--ink)}
+  .cloud-hint{font-family:var(--fy);font-weight:600;font-size:13.5px;color:color-mix(in srgb,#fff 78%,transparent);margin-top:20px;display:inline-flex;align-items:center;gap:7px}
+
+  /* modal */
+  .modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:20px;background:color-mix(in srgb,var(--ground) 78%,transparent);backdrop-filter:blur(4px)}
+  .modal.open{display:flex}
+  .modal-card{background:linear-gradient(180deg,var(--cream2),var(--cream));color:var(--paper-ink);border:2.5px solid var(--ink);border-radius:22px;box-shadow:0 30px 70px -20px #000;width:min(560px,100%);max-height:88vh;overflow:auto;padding:24px}
+  @media (prefers-reduced-motion:no-preference){.modal.open .modal-card{animation:pop .22s ease}}
+  @keyframes pop{from{transform:scale(.94) translateY(10px);opacity:0}to{transform:none;opacity:1}}
+  .modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
+  .modal-head .mtitle{font-family:var(--fx);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--gold-deep)}
+  .modal-head h3{font-family:var(--serif);font-weight:600;font-size:26px;color:var(--paper-ink);margin-top:4px;display:flex;align-items:center;gap:10px}
+  .modal-head h3 i{width:16px;height:16px;border-radius:50%;border:2px solid var(--ink)}
+  .mclose{flex:0 0 auto;width:38px;height:38px;border-radius:50%;border:2px solid var(--ink);background:var(--cream2);color:var(--ink);font-size:20px;line-height:1;cursor:pointer;box-shadow:2px 2px 0 var(--ink);font-family:var(--fx)}
+  .picks{display:flex;flex-direction:column;gap:14px;margin-top:18px}
+  .pick{display:flex;gap:14px;background:var(--cream2);border:2px solid var(--ink);border-radius:14px;padding:14px;box-shadow:4px 4px 0 rgba(108,59,255,.28)}
+  .pick .pc{flex:0 0 58px;height:84px;border-radius:6px;border:2px solid var(--ink);box-shadow:2px 2px 0 var(--ink);position:relative;overflow:hidden}
+  .pick .pc::before{content:"";position:absolute;left:7px;top:0;bottom:0;width:2px;background:rgba(255,255,255,.25)}
+  .pick .pc .pcb{position:absolute;left:0;right:0;top:26px;height:6px;background:var(--gold)}
+  .pick .pt{font-family:var(--serif);font-weight:600;font-size:18px;line-height:1.08}
+  .pick .pa{font-family:var(--fy);color:var(--paper-soft);font-weight:500;font-size:13px;margin-top:1px}
+  .pick .pw{font-size:14.5px;margin-top:7px;line-height:1.4}
+  .pick .pw b{font-family:var(--fx);font-weight:800;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--gold-deep);display:block;margin-bottom:2px}
+  .modal-foot{font-family:var(--fy);font-weight:600;font-size:12.5px;color:var(--paper-soft);margin-top:16px;text-align:center}
+
+  /* final cta */
+  .final{text-align:center}
+  .final .box{position:relative;background:linear-gradient(180deg,var(--cream2),var(--cream));border:2.5px solid var(--ink);border-radius:26px;box-shadow:0 30px 60px -26px #000;padding:clamp(30px,5vw,54px) clamp(22px,4vw,48px);max-width:720px;margin-inline:auto;color:var(--paper-ink)}
+  .final h2{color:var(--paper-ink);font-size:clamp(28px,4.5vw,44px)}
+  .final .lead{color:var(--paper-soft);margin-inline:auto}
+  .final .signup{margin-inline:auto;margin-top:26px}
+  .final .micro{color:var(--paper-soft);justify-content:center}
+  .holo{display:inline-block;margin-bottom:16px;font-family:var(--fy);font-weight:700;font-size:13px;color:var(--ink);background:conic-gradient(from 0deg,#ffd1ec,#d1e6ff,#d6ffe8,#fff2c4,#ffd1ec);border:2px solid var(--ink);border-radius:999px;padding:6px 15px;box-shadow:3px 3px 0 var(--ink)}
+  .final .moody-final{width:118px;margin:0 auto 6px;filter:drop-shadow(0 12px 16px rgba(0,0,0,.3))}
+  .final .moody-final svg{width:100%;height:auto;display:block}
+
+  /* footer */
+  footer{border-top:1px solid var(--edge);padding-block:40px}
+  .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:22px;align-items:flex-start}
+  .foot .logo{font-size:21px}
+  .foot .manifesto{max-width:36ch;color:var(--text-dim);font-style:italic;font-size:15px;margin-top:12px}
+  .foot .disc{font-family:var(--fy);color:var(--muted);font-size:12.5px;margin-top:12px;max-width:52ch;font-weight:500}
+  .foot-links{display:flex;gap:24px;font-family:var(--fx);font-weight:800;font-size:14px;color:var(--text-dim);flex-wrap:wrap}
+
+  @media (max-width:860px){ .hero-grid{grid-template-columns:1fr} .vs,.steps,.feats{grid-template-columns:1fr 1fr} .hero-visual{margin-top:14px} }
+  @media (max-width:560px){ body{font-size:17px} .vs,.steps,.feats{grid-template-columns:1fr} }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<nav>
+  <div class="wrap nav-in">
+    <div class="logo" aria-label="moodyreader">m<span class="lo d1"></span><span class="lo d2"></span>dy<span class="tail">reader</span></div>
+    <a class="btn gold" href="#join">Get early access</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">📖 book discovery, in the open</span>
+      <h1>Book recs that <span class="it">actually</span> get you.</h1>
+      <p class="sub">Tuned to your taste <em>and</em> your mood — and every pick tells you <span class="it">why</span>. Meet Moody: she reads the vibe, not just the genre.</p>
+      <form class="signup" id="join-form" novalidate>
+        <label for="email-hero" style="position:absolute;left:-9999px">Email address</label>
+        <input id="email-hero" type="email" inputmode="email" autocomplete="email" placeholder="you@email.com" required>
+        <button class="btn" type="submit">Get early access</button>
+      </form>
+      <p class="micro" id="micro">✦ Free to join · No spam, ever · Founding readers get a badge</p>
+      <div class="ok" id="ok-msg" role="status" aria-live="polite">
+        <strong>You're on the list! 🎉</strong><br>We'll email <span id="ok-email">you</span> the moment early access opens.
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div style="position:relative">
+        <div id="moodyHero" class="moody-hero" aria-hidden="true"></div>
+        <span class="speech">psst… read this one 👇</span>
+      </div>
+      <div class="reccard">
+        <div class="rc-top">
+          <div class="rc-cover"><span class="band2"></span><span class="ct">The Song of Achilles</span></div>
+          <div class="rc-meta">
+            <div class="bt">The Song of Achilles</div>
+            <div class="ba">Madeline Miller</div>
+            <div class="rc-stars">★★★★<span style="color:var(--cream-edge)">★</span><b>4.3 · 1.9M</b></div>
+            <div class="rc-chips"><span class="rc-chip">💔 heart-wrenching</span><span class="rc-chip">🖋 lyrical</span></div>
+          </div>
+        </div>
+        <div class="rc-match">
+          <span class="rc-dot" style="background:var(--coral)"></span>
+          <div><div class="mt">97% your kind of book</div><div class="ms">mood match: emotional · slow burn</div></div>
+        </div>
+        <div class="rc-why">
+          <h4>🔍 why Moody picked this</h4>
+          <ul>
+            <li><span class="dt" style="background:var(--coral)"></span><span>You gave <b>Circe</b> 5★ — same mythic, grief-soaked voice.</span></li>
+            <li><span class="dt" style="background:var(--grape)"></span><span>You rate <b>lyrical prose</b> a full star higher.</span></li>
+            <li><span class="dt" style="background:var(--mint)"></span><span>You finish <b>tragedies</b> — 8 of your last 9.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="band">
+  <div class="wrap">
+    <span class="kick">the problem</span>
+    <h2>Every reading app makes you <span class="it">settle.</span></h2>
+    <p class="lead">You end up juggling two apps and a group chat — because none does great recommendations, tracking, and community at once. And not one will tell you <span class="it">why</span> a book landed in front of you.</p>
+    <div class="vs">
+      <div class="v"><div class="n">Goodreads</div><div class="g">the complaint</div><p>Clunky and slow, whole-star ratings only, search that can't find the book in your hand, random recs.</p></div>
+      <div class="v"><div class="n">StoryGraph</div><div class="g">the complaint</div><p>Lovely stats and mood matching — but a lonely social side and pushback on opaque AI.</p></div>
+      <div class="v"><div class="n">Fable</div><div class="g">the complaint</div><p>Great clubs and vibes, but a thin catalog and an AI recap scandal that broke a lot of trust.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band paper" id="how">
+  <div class="wrap">
+    <span class="kick">how it works</span>
+    <h2>Smart recommendations. <span class="it">Nothing hidden.</span></h2>
+    <p class="lead">Most apps guess in the dark and hope you don't ask. Moody does the opposite: she learns your taste, matches on feel, and shows her work.</p>
+    <div class="steps">
+      <div class="step"><span class="dot" style="background:var(--grape)"></span><h3>Tell Moody your taste</h3><p>Rate a few books (half-stars welcome), pick the moods you chase, set the pace and themes you love — and the ones you never want again.</p><span class="tag">half &amp; quarter stars</span></div>
+      <div class="step"><span class="dot" style="background:var(--coral)"></span><h3>She matches on feel</h3><p>Moody reads the <em>texture</em> of a book — mood, pacing, prose, tropes — not just its shelf. "Cozy but devastating" is a real query here.</p><span class="tag">mood + vibe matching</span></div>
+      <div class="step"><span class="dot" style="background:var(--mint)"></span><h3>See exactly why</h3><p>Every rec comes with its reasons and a match you can question. Disagree? Tell her why, and she learns — right in front of you.</p><span class="tag">explainable, always</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="features">
+  <div class="wrap">
+    <span class="kick">what you get</span>
+    <h2>The good parts of every app. <span class="it">None of the clunk.</span></h2>
+    <div class="feats">
+      <div class="feat"><div class="ic" style="background:color-mix(in srgb,var(--grape) 24%,var(--panel))">🎯</div><h3>Recs that explain themselves</h3><p>A reason and a match on every suggestion. Thumbs-down and Moody adapts on the spot.</p></div>
+      <div class="feat"><div class="ic" style="background:color-mix(in srgb,var(--coral) 24%,var(--panel))">🌙</div><h3>Mood &amp; vibe search</h3><p>Search by how you want to feel, not just genre. "Slow, hopeful, set somewhere cold."</p></div>
+      <div class="feat"><div class="ic" style="background:color-mix(in srgb,var(--sun) 30%,var(--panel))">⭐</div><h3>Half &amp; quarter stars</h3><p>Because a 3.5 is not a 4. Rate honestly, and your recs get sharper for it.</p></div>
+      <div class="feat"><div class="ic" style="background:color-mix(in srgb,var(--mint) 26%,var(--panel))">💬</div><h3>A feed worth opening</h3><p>Friends, reviews, and clubs — with real moderation, so no more review-bomb pile-ons.</p></div>
+      <div class="feat"><div class="ic" style="background:color-mix(in srgb,var(--gold) 26%,var(--panel))">⚠️</div><h3>Content warnings you control</h3><p>Community-sourced, filterable, honest. Know what you're walking into — or turn it all off.</p></div>
+      <div class="feat"><div class="ic" style="background:color-mix(in srgb,var(--grape) 24%,var(--panel))">⚡</div><h3>Fast. Genuinely fast.</h3><p>Pages that load before you blink — on the web today, native apps soon. Speed is a feature.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band moodband">
+  <div class="wrap">
+    <span class="kick">find your next read by</span>
+    <h2>Mood, not just genre.</h2>
+    <p class="lead">Tell Moody the vibe and she'll find the book. Tap a mood to see two of her picks:</p>
+    <div class="cloud" id="cloud"></div>
+    <span class="cloud-hint">👆 every chip is clickable — go on, try "unhinged"</span>
+  </div>
+</section>
+
+<section class="band final" id="join">
+  <div class="wrap">
+    <div class="box">
+      <div id="moodyFinal" class="moody-final" aria-hidden="true"></div>
+      <span class="holo">✦ founding reader ✦</span>
+      <h2>Be a founding reader.</h2>
+      <p class="lead">We're building moodyreader in the open. Join the waitlist for first access, a founder badge, and a say in what Moody learns next.</p>
+      <form class="signup" id="join-form-2" novalidate>
+        <label for="email-foot" style="position:absolute;left:-9999px">Email address</label>
+        <input id="email-foot" type="email" inputmode="email" autocomplete="email" placeholder="you@email.com" required>
+        <button class="btn" type="submit">Claim my spot</button>
+      </form>
+      <p class="micro" id="micro2">✦ No spam · Unsubscribe anytime · Your shelves stay yours</p>
+      <div class="ok" id="ok-msg-2" role="status" aria-live="polite" style="margin-inline:auto;background:color-mix(in srgb,var(--mint) 20%,var(--cream));color:var(--paper-ink)">
+        <strong>You're on the list! 🎉</strong><br>Talk soon — Moody's saving you a spot.
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <div class="logo" aria-label="moodyreader">m<span class="lo d1"></span><span class="lo d2"></span>dy<span class="tail">reader</span></div>
+      <p class="manifesto">For people who take books seriously, not solemnly.</p>
+      <p class="disc">A concept in progress — not affiliated with Goodreads, StoryGraph, or Fable. Book data via open sources like Open Library.</p>
+    </div>
+    <div class="foot-links"><a href="#how">How it works</a><a href="#features">Features</a><a href="#join">Waitlist</a></div>
+  </div>
+</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-h">
+  <div class="modal-card">
+    <div class="modal-head">
+      <div><div class="mtitle">Moody's picks for</div><h3 id="modal-h"><i id="modal-dot"></i><span id="modal-name"></span></h3></div>
+      <button class="mclose" id="mclose" aria-label="Close">✕</button>
+    </div>
+    <div class="picks" id="picks"></div>
+    <div class="modal-foot">…and 40 more once you're in. 👻</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var NS="http://www.w3.org/2000/svg";
+  var BODY="M32,124 V60 C32,32 50,14 70,14 C90,14 108,32 108,60 V124 C108,133 98,137 92,131 C87,126 79,126 74,131 C69,136 61,136 56,131 C51,126 43,126 38,131 C33,136 32,133 32,124 Z";
+  function bow(cx,cy,col){return '<g transform="translate('+cx+','+cy+')"><path d="M0 0 L-15 -8 L-15 8 Z" fill="'+col+'" stroke="#191026" stroke-width="2.4" stroke-linejoin="round"/><path d="M0 0 L15 -8 L15 8 Z" fill="'+col+'" stroke="#191026" stroke-width="2.4" stroke-linejoin="round"/><circle cx="0" cy="0" r="5" fill="'+col+'" stroke="#191026" stroke-width="2.4"/></g>';}
+  function lashEye(cx,cy){return '<ellipse cx="'+cx+'" cy="'+cy+'" rx="6.2" ry="8.4" fill="#191026"/><circle cx="'+(cx-2)+'" cy="'+(cy-3.2)+'" r="2.2" fill="#fff"/><path d="M'+(cx-7)+' '+(cy-7.5)+' l-4 -3" stroke="#191026" stroke-width="2" stroke-linecap="round"/><path d="M'+(cx-6)+' '+(cy-9.6)+' l-2.5 -4" stroke="#191026" stroke-width="2" stroke-linecap="round"/>';}
+  function book(x,y,rot,fill){return '<g transform="rotate('+rot+' '+(x+18)+' '+(y+6)+')"><rect x="'+x+'" y="'+y+'" width="40" height="13" rx="2.2" fill="'+fill+'" stroke="#191026" stroke-width="2.4"/><rect x="'+(x+3)+'" y="'+(y+3.5)+'" width="34" height="2.2" fill="#E7B14C"/><line x1="'+(x+3)+'" y1="'+(y+9)+'" x2="'+(x+37)+'" y2="'+(y+9)+'" stroke="rgba(0,0,0,.25)" stroke-width="1.5"/></g>';}
+  function page(x,y){return '<g transform="rotate(18 '+x+' '+y+')"><path d="M'+x+' '+y+' h24 v28 q-12 -6 -24 0 Z" fill="#FBF3E1" stroke="#191026" stroke-width="2"/><line x1="'+(x+5)+'" y1="'+(y+8)+'" x2="'+(x+18)+'" y2="'+(y+8)+'" stroke="#C9B79A" stroke-width="1.5"/><line x1="'+(x+5)+'" y1="'+(y+14)+'" x2="'+(x+18)+'" y2="'+(y+14)+'" stroke="#C9B79A" stroke-width="1.5"/></g>';}
+  function ghost(opts){
+    opts=opts||{};
+    var g='<svg viewBox="0 0 150 156" xmlns="'+NS+'" role="img" aria-label="Moody">';
+    g+='<defs><linearGradient id="cr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FBF4E2"/><stop offset="1" stop-color="#EBDDBE"/></linearGradient></defs>';
+    g+='<g transform="translate(5,2) rotate('+(opts.rot||0)+' 70 80)">';
+    g+='<path d="'+BODY+'" fill="#FFFDF7" stroke="#FFFDF7" stroke-width="11" stroke-linejoin="round"/>';
+    g+='<path d="'+BODY+'" fill="url(#cr)" stroke="#191026" stroke-width="3.4" stroke-linejoin="round"/>';
+    g+='<ellipse cx="48" cy="82" rx="7.5" ry="4.2" fill="#FF6B54" opacity=".5"/><ellipse cx="92" cy="82" rx="7.5" ry="4.2" fill="#FF6B54" opacity=".5"/>';
+    g+=(opts.face||'')+(opts.top||'')+(opts.front||'')+'</g></svg>';
+    return g;
+  }
+  var faceOops=lashEye(58,64)+lashEye(82,64)+'<ellipse cx="70" cy="82" rx="4.3" ry="5.6" fill="#191026"/><path d="M106 50 q7 2 5 10 q-6 0 -5 -10 Z" fill="#7FD8FF" stroke="#3FA9E0" stroke-width="1.4"/>';
+  var faceSweet=lashEye(58,64)+lashEye(82,64)+'<path d="M64 80 Q70 86 76 80" fill="none" stroke="#191026" stroke-width="2.8" stroke-linecap="round"/>';
+  var heroFront='<g transform="translate(2,0)">'+book(52,104,-5,"#6C3BFF")+book(50,93,4,"#B23A2E")+book(56,82,-9,"#2E6E52")+page(104,74)+
+    '<path d="M40 70 q-6 -3 -10 1" stroke="#E7B14C" stroke-width="2.6" fill="none" stroke-linecap="round"/><path d="M36 80 q-7 -2 -12 3" stroke="#E7B14C" stroke-width="2.6" fill="none" stroke-linecap="round"/></g>';
+  var hh=document.getElementById("moodyHero"); if(hh) hh.innerHTML=ghost({rot:-6,top:bow(66,12,"#FF6B54"),face:faceOops,front:heroFront});
+  var fin=document.getElementById("moodyFinal"); if(fin) fin.innerHTML=ghost({rot:2,top:bow(66,12,"#8B6BFF"),face:faceSweet,front:book(52,102,-3,"#6C3BFF")+book(54,91,2,"#C9962F")});
+
+  /* ---- mood picks ---- */
+  var G="#6C3BFF",R="#B23A2E",N="#2E4A6E",F="#2E6E52",O="#C9962F",P="#7C3B6E",TE="#1F7A6B";
+  var MOODS=[
+    ["cozy","#8B6BFF",[
+      ["Legends & Lattes","Travis Baldree",[G,O],"An orc opens a coffee shop. Low stakes, big heart, zero peril."],
+      ["The House in the Cerulean Sea","TJ Klune",[TE,N],"A found family so warm you'll want to move in."]]],
+    ["unhinged","#FF6B54",[
+      ["My Year of Rest and Relaxation","Ottessa Moshfegh",[O,R],"A narrator who decides to sleep for a year. Gloriously off the rails."],
+      ["Bunny","Mona Awad",[P,G],"MFA cult vibes and a fever-dream you will not shake."]]],
+    ["slow burn","#33D2A4",[
+      ["The Priory of the Orange Tree","Samantha Shannon",[F,O],"700 pages of tension before the sapphic payoff. Worth every one."],
+      ["Persuasion","Jane Austen",[N,G],"Second-chance longing, letter and all. The original slow burn."]]],
+    ["made me sob","#FF6B54",[
+      ["A Little Life","Hanya Yanagihara",[R,N],"You will not be okay. Bring tissues and a support system."],
+      ["The Kite Runner","Khaled Hosseini",[O,R],"Guilt, friendship, redemption. It gets you in chapter seven."]]],
+    ["morally grey","#8B6BFF",[
+      ["The Secret History","Donna Tartt",[F,R],"Beautiful people do terrible things at a New England college."],
+      ["Babel","R.F. Kuang",[R,O],"When does resistance justify violence? No easy answers."]]],
+    ["hopeful sci-fi","#FFC531",[
+      ["Project Hail Mary","Andy Weir",[N,TE],"One man, one ship, one very good alien. Ends on pure joy."],
+      ["A Psalm for the Wild-Built","Becky Chambers",[F,TE],"A tea monk and a robot ask what people need. Balm for the soul."]]],
+    ["found family","#33D2A4",[
+      ["Six of Crows","Leigh Bardugo",[N,P],"Six criminals, one impossible heist, a whole lot of loyalty."],
+      ["The Long Way to a Small, Angry Planet","Becky Chambers",[G,TE],"A ragtag ship crew that feels like home."]]],
+    ["dark academia","#8B6BFF",[
+      ["If We Were Villains","M.L. Rio",[R,N],"Shakespeare students, one dead body, unbearable tension."],
+      ["Ninth House","Leigh Bardugo",[P,G],"Yale's secret societies actually do magic. Dark and delicious."]]],
+    ["read in one sitting","#FFC531",[
+      ["The Silent Patient","Alex Michaelides",[N,R],"A twist that reframes everything. You won't get up."],
+      ["We Have Always Lived in the Castle","Shirley Jackson",[P,R],"Short, strange, and impossible to put down."]]],
+    ["quietly devastating","#FF6B54",[
+      ["Never Let Me Go","Kazuo Ishiguro",[N,TE],"The sadness sneaks up, and then it's everywhere."],
+      ["Stoner","John Williams",[O,R],"A quiet life, quietly heartbreaking. A masterpiece of small things."]]],
+    ["enemies to lovers","#8B6BFF",[
+      ["The Hating Game","Sally Thorne",[R,G],"Office rivals, simmering tension, one very good elevator."],
+      ["Red, White & Royal Blue","Casey McQuiston",[N,R],"Prince vs. First Son, fake feud to real feelings."]]],
+    ["weird little guy","#FFC531",[
+      ["Piranesi","Susanna Clarke",[G,TE],"A man, an infinite house, tides in the halls. Trust the vibes."],
+      ["Convenience Store Woman","Sayaka Murata",[TE,O],"She just wants to work at the store. Oddly profound."]]]
+  ];
+
+  var cloud=document.getElementById("cloud");
+  MOODS.forEach(function(m,idx){
+    var b=document.createElement("button");
+    b.type="button";b.className="mc";b.setAttribute("aria-haspopup","dialog");
+    b.innerHTML='<i style="background:'+m[1]+'"></i>'+m[0];
+    b.addEventListener("click",function(){openModal(idx);});
+    cloud.appendChild(b);
+  });
+
+  var modal=document.getElementById("modal"),picks=document.getElementById("picks"),
+      mname=document.getElementById("modal-name"),mdot=document.getElementById("modal-dot"),
+      mclose=document.getElementById("mclose");
+  var lastFocus=null;
+  function openModal(i){
+    var m=MOODS[i];
+    mname.textContent=m[0];mdot.style.background=m[1];
+    picks.innerHTML=m[2].map(function(bk){
+      return '<div class="pick"><div class="pc" style="background:linear-gradient(150deg,'+bk[2][0]+','+bk[2][1]+')"><span class="pcb"></span></div>'+
+        '<div><div class="pt">'+bk[0]+'</div><div class="pa">'+bk[1]+'</div>'+
+        '<div class="pw"><b>why Moody picked this</b>'+bk[3]+'</div></div></div>';
+    }).join("");
+    lastFocus=document.activeElement;
+    modal.classList.add("open");
+    mclose.focus();
+  }
+  function closeModal(){modal.classList.remove("open");if(lastFocus)lastFocus.focus();}
+  mclose.addEventListener("click",closeModal);
+  modal.addEventListener("click",function(e){if(e.target===modal)closeModal();});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape"&&modal.classList.contains("open"))closeModal();});
+
+  /* ---- waitlist ---- */
+  var STORE="mr_waitlist_v1";
+  function save(v){try{localStorage.setItem(STORE,v);}catch(e){}}
+  function saved(){try{return localStorage.getItem(STORE);}catch(e){return null;}}
+  var valid=function(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);};
+  function wire(f,i,o,m){
+    var form=document.getElementById(f); if(!form)return;
+    var input=document.getElementById(i),ok=document.getElementById(o),micro=m?document.getElementById(m):null;
+    form.addEventListener("submit",function(e){
+      e.preventDefault();
+      var v=(input.value||"").trim();
+      if(!valid(v)){input.focus();input.style.borderColor="var(--coral)";if(micro){micro.textContent="Hmm, that email looks off — mind checking it?";micro.style.color="var(--coral)";}return;}
+      save(v);var oe=document.getElementById("ok-email");if(oe)oe.textContent=v;
+      form.hidden=true;if(micro)micro.hidden=true;ok.style.display="block";
+    });
+    input.addEventListener("input",function(){input.style.borderColor="var(--ink)";});
+  }
+  wire("join-form","email-hero","ok-msg","micro");
+  wire("join-form-2","email-foot","ok-msg-2","micro2");
+  var prev=saved(); if(prev){var oe=document.getElementById("ok-email");if(oe)oe.textContent=prev;}
+})();
+</script>

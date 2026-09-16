@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="moodyreader app icon">
+  <defs>
+    <linearGradient id="tile" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8B6BFF"/><stop offset="1" stop-color="#5A28E0"/>
+    </linearGradient>
+    <linearGradient id="cr2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FBF4E2"/><stop offset="1" stop-color="#EBDDBE"/>
+    </linearGradient>
+  </defs>
+  <rect x="16" y="16" width="480" height="480" rx="116" fill="url(#tile)" stroke="#191026" stroke-width="10"/>
+  <!-- candlelight glow -->
+  <circle cx="360" cy="150" r="150" fill="#E7B14C" opacity=".16"/>
+  <!-- Moody head peeking -->
+  <g transform="translate(256,300)">
+    <path d="M-96,150 V-22 C-96,-92 -44,-140 0,-140 C44,-140 96,-92 96,-22 V150 C96,168 74,176 60,158 C46,142 22,142 8,158 C-6,174 -30,174 -44,158 C-58,142 -82,150 -96,150 Z"
+      fill="url(#cr2)" stroke="#191026" stroke-width="11" stroke-linejoin="round" transform="scale(1.1)"/>
+    <!-- bow -->
+    <g transform="translate(0,-150)">
+      <path d="M0 0 L-30 -16 L-30 16 Z" fill="#FF6B54" stroke="#191026" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M0 0 L30 -16 L30 16 Z" fill="#FF6B54" stroke="#191026" stroke-width="7" stroke-linejoin="round"/>
+      <circle cx="0" cy="0" r="11" fill="#FF6B54" stroke="#191026" stroke-width="7"/>
+    </g>
+    <!-- eyes + lashes -->
+    <ellipse cx="-34" cy="-30" rx="13" ry="18" fill="#191026"/><circle cx="-39" cy="-38" r="5" fill="#fff"/>
+    <path d="M-49 -46 l-9 -7" stroke="#191026" stroke-width="5" stroke-linecap="round"/>
+    <ellipse cx="34" cy="-30" rx="13" ry="18" fill="#191026"/><circle cx="29" cy="-38" r="5" fill="#fff"/>
+    <path d="M49 -46 l9 -7" stroke="#191026" stroke-width="5" stroke-linecap="round"/>
+    <ellipse cx="-56" cy="6" rx="15" ry="9" fill="#FF6B54" opacity=".5"/>
+    <ellipse cx="56" cy="6" rx="15" ry="9" fill="#FF6B54" opacity=".5"/>
+    <path d="M-14 8 Q0 22 14 8" fill="none" stroke="#191026" stroke-width="6" stroke-linecap="round"/>
+  </g>
+</svg>

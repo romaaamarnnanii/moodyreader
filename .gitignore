@@ -1,0 +1,8 @@
+.DS_Store
+*.zip
+# process / exploration files — not part of the live site
+thegoodreader-landing.html
+moodyreader-landing.html
+brand-explorer.html
+moody-direction.html
+identity-concepts.html

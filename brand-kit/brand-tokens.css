@@ -1,0 +1,52 @@
+/* moodyreader — brand tokens
+   Grape Soda × dark academia. Drop into your app's global stylesheet. */
+
+:root{
+  /* ---- core palette ---- */
+  --mr-grape:        #6C3BFF;  /* primary */
+  --mr-grape-bright: #8B6BFF;  /* primary on dark grounds */
+  --mr-grape-tint:   #A88BFF;
+  --mr-coral:        #FF6B54;  /* mood: emotional */
+  --mr-sun:          #FFC531;  /* mood: light & fun */
+  --mr-mint:         #33D2A4;  /* mood: calm */
+  --mr-gold:         #E7B14C;  /* candlelight accent */
+  --mr-gold-deep:    #C9962F;
+
+  /* ---- dark-academia grounds ---- */
+  --mr-ground:   #150E29;  /* deepest plum */
+  --mr-ground-2: #1D1438;
+  --mr-panel:    #251B43;
+  --mr-panel-2:  #2E2352;
+  --mr-edge:     #3A2E5C;
+
+  /* ---- aged paper (light surfaces) ---- */
+  --mr-cream:     #F4EAD2;
+  --mr-cream-2:   #FBF3E1;
+  --mr-cream-edge:#E3D2AC;
+
+  /* ---- ink & text ---- */
+  --mr-ink:        #191026;  /* linework, borders, text on cream */
+  --mr-paper-ink:  #241813;  /* body text on cream */
+  --mr-paper-soft: #6A5A46;
+  --mr-text:       #EFE6D6;  /* body text on plum */
+  --mr-text-dim:   #BEB2D4;
+  --mr-muted:      #8B7EA8;
+
+  /* ---- mood → color map (for the "oo" dots, chips, match rings) ---- */
+  --mr-mood-immersive: var(--mr-grape);
+  --mr-mood-emotional: var(--mr-coral);
+  --mr-mood-light:     var(--mr-sun);
+  --mr-mood-calm:      var(--mr-mint);
+
+  /* ---- type ---- */
+  --mr-font-display: "Bricolage Grotesque", system-ui, sans-serif; /* wordmark + headings */
+  --mr-font-body:    "Newsreader", Georgia, "Times New Roman", serif; /* body + literary italics */
+  --mr-font-accent:  "Fredoka", system-ui, sans-serif; /* mood chips, playful UI, Moody's voice */
+  /* Alt body if you prefer a sans: "Hanken Grotesk", system-ui, sans-serif */
+
+  /* ---- signature treatments ---- */
+  --mr-radius:   18px;
+  --mr-border:   2px solid var(--mr-ink);
+  --mr-shadow:   3px 3px 0 var(--mr-ink);   /* hard sticker shadow — no soft blur */
+  --mr-shadow-lg:12px 12px 0 rgba(108,59,255,.35);
+}

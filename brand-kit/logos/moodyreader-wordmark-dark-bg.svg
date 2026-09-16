@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 120" width="600" height="120" role="img" aria-label="moodyreader">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&amp;display=swap');
+    .wm{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:84px}
+  </style>
+  <!-- For use on DARK backgrounds. Open in a browser so the webfont loads. Outline the text for production. -->
+  <text class="wm" x="16" y="88" fill="#F4EAD2">m</text>
+  <circle cx="120" cy="63" r="22" fill="#8B6BFF" stroke="#191026" stroke-width="5"/>
+  <circle cx="172" cy="63" r="22" fill="#FF6B54" stroke="#191026" stroke-width="5"/>
+  <text class="wm" x="198" y="88" fill="#F4EAD2">dy</text>
+  <text class="wm" x="298" y="88" fill="#A88BFF">reader</text>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 156" width="150" height="156" role="img" aria-label="Moody the reading ghost">
+  <defs>
+    <linearGradient id="cr" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FBF4E2"/><stop offset="1" stop-color="#EBDDBE"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(5,2) rotate(-6 70 80)">
+    <path d="M32,124 V60 C32,32 50,14 70,14 C90,14 108,32 108,60 V124 C108,133 98,137 92,131 C87,126 79,126 74,131 C69,136 61,136 56,131 C51,126 43,126 38,131 C33,136 32,133 32,124 Z" fill="#FFFDF7" stroke="#FFFDF7" stroke-width="11" stroke-linejoin="round"/>
+    <path d="M32,124 V60 C32,32 50,14 70,14 C90,14 108,32 108,60 V124 C108,133 98,137 92,131 C87,126 79,126 74,131 C69,136 61,136 56,131 C51,126 43,126 38,131 C33,136 32,133 32,124 Z" fill="url(#cr)" stroke="#191026" stroke-width="3.4" stroke-linejoin="round"/>
+    <ellipse cx="48" cy="82" rx="7.5" ry="4.2" fill="#FF6B54" opacity=".5"/>
+    <ellipse cx="92" cy="82" rx="7.5" ry="4.2" fill="#FF6B54" opacity=".5"/>
+    <!-- eyes + lashes -->
+    <ellipse cx="58" cy="64" rx="6.2" ry="8.4" fill="#191026"/><circle cx="56" cy="60.8" r="2.2" fill="#fff"/>
+    <path d="M51 56.5 l-4 -3" stroke="#191026" stroke-width="2" stroke-linecap="round"/><path d="M52 54.4 l-2.5 -4" stroke="#191026" stroke-width="2" stroke-linecap="round"/>
+    <ellipse cx="82" cy="64" rx="6.2" ry="8.4" fill="#191026"/><circle cx="80" cy="60.8" r="2.2" fill="#fff"/>
+    <path d="M75 56.5 l-4 -3" stroke="#191026" stroke-width="2" stroke-linecap="round"/><path d="M76 54.4 l-2.5 -4" stroke="#191026" stroke-width="2" stroke-linecap="round"/>
+    <ellipse cx="70" cy="82" rx="4.3" ry="5.6" fill="#191026"/>
+    <path d="M106 50 q7 2 5 10 q-6 0 -5 -10 Z" fill="#7FD8FF" stroke="#3FA9E0" stroke-width="1.4"/>
+    <!-- bow -->
+    <g transform="translate(66,12)">
+      <path d="M0 0 L-15 -8 L-15 8 Z" fill="#FF6B54" stroke="#191026" stroke-width="2.4" stroke-linejoin="round"/>
+      <path d="M0 0 L15 -8 L15 8 Z" fill="#FF6B54" stroke="#191026" stroke-width="2.4" stroke-linejoin="round"/>
+      <circle cx="0" cy="0" r="5" fill="#FF6B54" stroke="#191026" stroke-width="2.4"/>
+    </g>
+    <!-- toppling book stack + page + motion -->
+    <g transform="translate(2,0)">
+      <g transform="rotate(-5 72 110)"><rect x="52" y="104" width="40" height="13" rx="2.2" fill="#6C3BFF" stroke="#191026" stroke-width="2.4"/><rect x="55" y="107.5" width="34" height="2.2" fill="#E7B14C"/><line x1="55" y1="113" x2="89" y2="113" stroke="rgba(0,0,0,.25)" stroke-width="1.5"/></g>
+      <g transform="rotate(4 70 99)"><rect x="50" y="93" width="40" height="13" rx="2.2" fill="#B23A2E" stroke="#191026" stroke-width="2.4"/><rect x="53" y="96.5" width="34" height="2.2" fill="#E7B14C"/><line x1="53" y1="102" x2="87" y2="102" stroke="rgba(0,0,0,.25)" stroke-width="1.5"/></g>
+      <g transform="rotate(-9 76 88)"><rect x="56" y="82" width="40" height="13" rx="2.2" fill="#2E6E52" stroke="#191026" stroke-width="2.4"/><rect x="59" y="85.5" width="34" height="2.2" fill="#E7B14C"/><line x1="59" y1="91" x2="93" y2="91" stroke="rgba(0,0,0,.25)" stroke-width="1.5"/></g>
+      <g transform="rotate(18 104 74)"><path d="M104 74 h24 v28 q-12 -6 -24 0 Z" fill="#FBF3E1" stroke="#191026" stroke-width="2"/><line x1="109" y1="82" x2="122" y2="82" stroke="#C9B79A" stroke-width="1.5"/><line x1="109" y1="88" x2="122" y2="88" stroke="#C9B79A" stroke-width="1.5"/></g>
+      <path d="M40 70 q-6 -3 -10 1" stroke="#E7B14C" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+      <path d="M36 80 q-7 -2 -12 3" stroke="#E7B14C" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+    </g>
+  </g>
+</svg>
