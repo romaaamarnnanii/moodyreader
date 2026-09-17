@@ -6,3 +6,11 @@ moodyreader-landing.html
 brand-explorer.html
 moody-direction.html
 identity-concepts.html
+
+# internal research — never publish to the public site
+feedback-dashboard.html
+phase1-wireframes.html
+moody-avatars.html
+
+# app has its own private repo
+moodyreader-app/
