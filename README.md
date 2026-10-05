@@ -1,6 +1,6 @@
 # moodyreader
 
-A better book-discovery app: **recommendations that actually get you — and always tell you why.**
+**Log the chapter, find the sequel.** Reading tracker + book recs that always tell you why — live at https://moodyreader-app.vercel.app
 Mood-based, explainable recs fronted by *Moody*, a clumsy little reading ghost.
 
 *Bold, vibrant, and a little haunted — Grape Soda × dark academia.*
@@ -8,6 +8,7 @@ Mood-based, explainable recs fronted by *Moody*, a clumsy little reading ghost.
 ## This repo
 
 - `index.html` — the landing page (static, no build step)
+- `screenshots/` — real app screenshots used on the landing page
 - `brand-kit/` — brand guide, logo SVGs, and design tokens
   - `brand-kit.html` — visual brand guide
   - `brand-tokens.css` — colors, type, treatments
