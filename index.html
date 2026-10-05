@@ -1,13 +1,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>moodyreader — log the chapter, find the sequel</title>
-<meta name="description" content="Track every page, keep a streak, and get book recs from Moody that always tell you why. Free, private, and live now.">
+<meta name="description" content="A reading tracker that feels like a game, and book recs from Moody that always tell you why. Join the waitlist for early access.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta property="og:title" content="moodyreader">
-<meta property="og:description" content="Log the chapter, find the sequel. Track your reading and get book recs that always tell you why — free, live now.">
+<meta property="og:description" content="Log the chapter, find the sequel. Track your reading and get book recs that always tell you why. Join the waitlist for early access.">
 <meta name="theme-color" content="#150E29">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -136,10 +136,12 @@
 
   /* basics */
   .basics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:38px}
-  .basic{background:var(--cream2);border:1.5px solid var(--ink);box-shadow:4px 4px 0 color-mix(in srgb,var(--grape) 45%,var(--ground));border-radius:14px;padding:16px}
+  .basic{background:var(--cream2);border:1.5px solid var(--cream-edge);border-radius:14px;padding:16px}
   .basic .bi{font-size:22px;line-height:1}
   .basic h3{font-family:var(--fx);font-weight:800;font-size:15px;margin-top:9px;color:var(--paper-ink)}
   .basic p{margin-top:4px;color:var(--paper-soft);font-size:13.5px;line-height:1.4}
+
+  .soon{font-family:var(--fy);font-weight:700;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--gold-deep);background:color-mix(in srgb,var(--gold) 18%,var(--cream2));border:1px solid var(--cream-edge);border-radius:6px;padding:2px 6px;margin-left:5px;vertical-align:2px}
 
   /* mood band */
   .moodband{background:linear-gradient(160deg,var(--grape-deep),#4A1FC0);border-block:2px solid var(--ink)}
@@ -183,39 +185,6 @@
   .final .moody-final{width:118px;margin:0 auto 6px;filter:drop-shadow(0 12px 16px rgba(0,0,0,.3))}
   .final .moody-final svg{width:100%;height:auto;display:block}
 
-  /* hero CTA row */
-  .cta-row{margin-top:26px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-  .btn.big{font-size:17px;padding:14px 24px}
-  .btn.ghost{background:transparent;color:var(--cream);border-color:var(--edge);box-shadow:none}
-  .btn.ghost:hover{border-color:var(--grape-bright);box-shadow:none;transform:none}
-
-  /* phone frames */
-  .phone{position:relative;width:min(290px,78vw);aspect-ratio:390/844;border-radius:40px;border:3px solid var(--ink);background:#0b0718;padding:8px;box-shadow:0 0 0 2px color-mix(in srgb,var(--grape) 40%,transparent),14px 18px 0 rgba(108,59,255,.28),0 40px 60px -30px #000;flex:0 0 auto}
-  .phone img{display:block;width:100%;height:100%;object-fit:cover;object-position:top;border-radius:32px}
-  .hero-visual .phone{margin-top:-10px;z-index:2}
-  .hero-visual .moody-hero{width:min(150px,40%);margin-bottom:-34px;align-self:flex-start;margin-left:6%}
-
-  /* tour */
-  .tour{display:flex;gap:26px;overflow-x:auto;scroll-snap-type:x mandatory;padding:44px 20px 30px;margin-inline:-20px;scrollbar-width:thin;scrollbar-color:var(--grape) transparent}
-  .tour figure{margin:0;scroll-snap-align:center;display:flex;flex-direction:column;align-items:center;gap:16px;flex:0 0 auto}
-  .tour .phone{width:min(250px,70vw)}
-  .tour figcaption{max-width:250px;text-align:center}
-  .tour figcaption b{display:block;font-family:var(--fx);font-weight:800;font-size:17px;color:var(--cream)}
-  .tour figcaption span{display:block;font-size:14.5px;color:var(--text-dim);line-height:1.4;margin-top:3px}
-  .tour .n{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;border:2px solid var(--ink);background:var(--gold);color:var(--ink);font-family:var(--fx);font-weight:800;font-size:13px;margin-bottom:6px;box-shadow:2px 2px 0 var(--ink)}
-  .tour-hint{font-family:var(--fy);font-weight:600;font-size:13.5px;color:var(--muted)}
-
-  /* split: text + phone */
-  .split{display:grid;grid-template-columns:1fr auto;gap:clamp(28px,6vw,70px);align-items:center;margin-top:10px}
-  .split.rev{grid-template-columns:auto 1fr}
-  .split ul{list-style:none;padding:0;margin:22px 0 0;display:flex;flex-direction:column;gap:12px}
-  .split li{display:flex;gap:12px;align-items:flex-start;font-size:16.5px;line-height:1.45}
-  .split li .e{flex:0 0 auto;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;border:2px solid var(--ink);font-size:17px;background:var(--cream2)}
-  .paper .split li{color:var(--paper-ink)}
-  .live{display:inline-flex;align-items:center;gap:7px;font-family:var(--fy);font-weight:700;font-size:12.5px;color:var(--ink);background:var(--mint);border:2px solid var(--ink);border-radius:999px;padding:3px 11px;box-shadow:2px 2px 0 var(--ink);margin-left:8px;vertical-align:middle}
-  .live::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ink)}
-  .soon{font-family:var(--fy);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--gold-deep);background:color-mix(in srgb,var(--gold) 18%,var(--cream2));border:1px solid var(--cream-edge);border-radius:6px;padding:2px 7px;margin-left:6px}
-
   /* footer */
   footer{border-top:1px solid var(--edge);padding-block:40px}
   .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:22px;align-items:flex-start}
@@ -224,7 +193,7 @@
   .foot .disc{font-family:var(--fy);color:var(--muted);font-size:12.5px;margin-top:12px;max-width:52ch;font-weight:500}
   .foot-links{display:flex;gap:24px;font-family:var(--fx);font-weight:800;font-size:14px;color:var(--text-dim);flex-wrap:wrap}
 
-  @media (max-width:860px){ .split,.split.rev{grid-template-columns:1fr;justify-items:center} .split.rev .phone{order:2} .hero-grid{grid-template-columns:1fr} .vs,.steps,.feats,.basics{grid-template-columns:1fr 1fr} .hero-visual{margin-top:22px} }
+  @media (max-width:860px){ .hero-grid{grid-template-columns:1fr} .vs,.steps,.feats,.basics{grid-template-columns:1fr 1fr} .hero-visual{margin-top:22px} }
   @media (max-width:560px){ body{font-size:17px} .vs,.steps,.feats,.basics{grid-template-columns:1fr} }
   @media (max-width:520px){
     .nav-in{height:60px} .nav-in .logo{font-size:19px} .btn{padding:10px 15px;font-size:14px}
@@ -244,29 +213,55 @@
 <nav>
   <div class="wrap nav-in">
     <div class="logo" aria-label="moodyreader">m<span class="lo d1"></span><span class="lo d2"></span>dy<span class="tail">reader</span></div>
-    <a class="btn gold" href="https://moodyreader-app.vercel.app">Open the app</a>
+    <a class="btn gold" href="#join">Get early access</a>
   </div>
 </nav>
 
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="eyebrow">📖 live now · free · on the web</span>
+      <span class="eyebrow">📖 book discovery, in the open</span>
       <h1>Log the chapter. <span class="it">Find the sequel.</span></h1>
       <p class="sub">Track every page, keep a streak alive, and let Moody pick what you read next — from the books you actually loved, and always with a <span class="it">why</span>.</p>
-      <div class="cta-row">
-        <a class="btn big" href="https://moodyreader-app.vercel.app">Start reading — it's free →</a>
-        <a class="btn ghost" href="#tour">Take the tour</a>
+      <form class="signup" id="join-form" action="https://buttondown.com/api/emails/embed-subscribe/moodyreader" method="post" target="_blank" novalidate>
+        <label for="email-hero" style="position:absolute;left:-9999px">Email address</label>
+        <input id="email-hero" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@email.com" required>
+        <button class="btn" type="submit">Get early access</button>
+      </form>
+      <p class="micro" id="micro">✦ Free to join · <b style="color:var(--gold)">Only 100 founding spots</b> · No spam, ever</p>
+      <p class="micro" style="color:var(--muted)">🔒 No creepy AI · your shelves stay yours · import from Goodreads &amp; StoryGraph in one click</p>
+      <div class="ok" id="ok-msg" role="status" aria-live="polite">
+        <strong>Almost there! 🎉</strong><br>Finish up in the tab we just opened — confirm your email and you're a founding reader.
       </div>
-      <p class="micro">✦ Sign in with Google in one tap · No credit card · Stats are free, always</p>
-      <p class="micro" style="color:var(--muted)">🔒 Your shelves stay yours · import from Goodreads &amp; StoryGraph in one click</p>
     </div>
 
     <div class="hero-visual">
-      <div style="position:relative;width:100%;display:flex;flex-direction:column;align-items:center">
+      <div style="position:relative">
         <div id="moodyHero" class="moody-hero" aria-hidden="true"></div>
-        <span class="moody-note" style="left:auto;right:4%;top:6px"><span class="lbl">Hi, I'm <b>Moody</b>! 👋</span></span>
-        <div class="phone"><img src="screenshots/home.webp" alt="moodyreader Home: a greeting from Moody, today's poem line, a daily page goal with a 23-day streak, and the book you're currently reading" width="390" height="844" fetchpriority="high"></div>
+        <span class="moody-note"><span class="lbl">Hi, I'm <b>Moody</b>! 👋</span><svg class="arrow" viewBox="0 0 50 48" aria-hidden="true"><path d="M9 5 C 3 18, 21 21, 15 38" fill="none" stroke="var(--gold)" stroke-width="3.4" stroke-linecap="round"/><path d="M15 38 l-7 -6 M15 38 l7 -3" fill="none" stroke="var(--gold)" stroke-width="3.4" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="reccard">
+        <div class="rc-top">
+          <div class="rc-cover"><span class="band2"></span><span class="ct">The Song of Achilles</span></div>
+          <div class="rc-meta">
+            <div class="bt">The Song of Achilles</div>
+            <div class="ba">Madeline Miller</div>
+            <div class="rc-stars">★★★★<span style="color:var(--cream-edge)">★</span><b>4.3 · 1.9M</b></div>
+            <div class="rc-chips"><span class="rc-chip">😭 made me sob</span><span class="rc-chip">🖋️ literary</span></div>
+          </div>
+        </div>
+        <div class="rc-match">
+          <span class="rc-dot" style="background:var(--coral)"></span>
+          <div><div class="mt">Picked for your taste</div><div class="ms">matches: made me sob · literary · an author you love</div></div>
+        </div>
+        <div class="rc-why">
+          <h4>🔍 why Moody picked this</h4>
+          <ul>
+            <li><span class="dt" style="background:var(--coral)"></span><span>You rated <b>Circe</b> 5★ — same mythic, grief-soaked voice.</span></li>
+            <li><span class="dt" style="background:var(--grape)"></span><span>It fits your <b>😭 made me sob</b> mood.</span></li>
+            <li><span class="dt" style="background:var(--mint)"></span><span><b>Madeline Miller</b> is on your favourite-authors list.</span></li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -285,89 +280,48 @@
   </div>
 </section>
 
-<section class="band" id="tour" style="padding-top:0">
-  <div class="wrap">
-    <span class="kick">the tour</span>
-    <h2>This is the real app. <span class="it">Swipe through.</span></h2>
-    <p class="lead">No mockups: these are screenshots of moodyreader as it is today, from first tap to your first recs.</p>
-    <div class="tour" tabindex="0" aria-label="App screenshots">
-      <figure><div class="phone"><img src="screenshots/intro-1.webp" alt="Reading, but make it fun" width="390" height="844" loading="lazy"></div><figcaption><span class="n">1</span><b>Reading, but make it fun</b><span>Three quick slides, one tap with Google, and you're in.</span></figcaption></figure>
-      <figure><div class="phone"><img src="screenshots/onboarding-moods.webp" alt="Pick the moods you chase" width="390" height="844" loading="lazy"></div><figcaption><span class="n">2</span><b>Pick the moods you chase</b><span>Twelve moods, each with an emoji so they scan at a glance.</span></figcaption></figure>
-      <figure><div class="phone"><img src="screenshots/onboarding-genres.webp" alt="…and your genres" width="390" height="844" loading="lazy"></div><figcaption><span class="n">3</span><b>…and your genres</b><span>From 🐉 fantasy to 🌻 self-help. The whole setup takes about a minute.</span></figcaption></figure>
-      <figure><div class="phone"><img src="screenshots/onboarding-moody.webp" alt="Meet your Moody" width="390" height="844" loading="lazy"></div><figcaption><span class="n">4</span><b>Meet your Moody</b><span>Your taste picks one of nine Moody avatars, and you can swap any time.</span></figcaption></figure>
-      <figure><div class="phone"><img src="screenshots/home.webp" alt="Your day at a glance" width="390" height="844" loading="lazy"></div><figcaption><span class="n">5</span><b>Your day at a glance</b><span>Daily page goal, streak, Moody's line of the day, and what you're reading.</span></figcaption></figure>
-      <figure><div class="phone"><img src="screenshots/home-activity.webp" alt="Everything you did, in one feed" width="390" height="844" loading="lazy"></div><figcaption><span class="n">6</span><b>Everything you did, in one feed</b><span>Pages logged, books shelved, finishes with your star rating, and imports rolled into one line.</span></figcaption></figure>
-      <figure><div class="phone"><img style="object-position:bottom" src="screenshots/home-recs.webp" alt="Recs that show their work" width="390" height="844" loading="lazy"></div><figcaption><span class="n">7</span><b>Recs that show their work</b><span>Every pick says why: an author you love, a book you rated highly, your mood.</span></figcaption></figure>
-      <figure><div class="phone"><img src="screenshots/profile-finetune.webp" alt="Fine-tune your Moody" width="390" height="844" loading="lazy"></div><figcaption><span class="n">8</span><b>Fine-tune your Moody</b><span>Tropes you love or never want, pace, prose, length. All optional, all yours.</span></figcaption></figure>
-    </div>
-    <span class="tour-hint">← swipe or scroll →</span>
-  </div>
-</section>
-
 <section class="band paper" id="how">
   <div class="wrap">
     <span class="kick">how it works</span>
     <h2>Smart recommendations. <span class="it">Nothing hidden.</span></h2>
     <p class="lead">Most apps guess in the dark and hope you don't ask. Moody does the opposite: she learns your taste, matches on feel, and shows her work.</p>
     <div class="steps">
-      <div class="step"><span class="dot" style="background:var(--grape)"></span><h3>Tell Moody your taste</h3><p>Pick a few moods and genres, drop in books you loved, or import your whole Goodreads or StoryGraph library. About a minute, all skippable.</p><span class="tag">one-minute setup</span></div>
-      <div class="step"><span class="dot" style="background:var(--coral)"></span><h3>She reads what you loved</h3><p>Moody starts from the books you rated highly and finished, the authors you follow, and the moods you chase. A book that hits several of those beats one that hits a single one.</p><span class="tag">your books, not the crowd's</span></div>
-      <div class="step"><span class="dot" style="background:var(--mint)"></span><h3>See exactly why</h3><p>Every rec carries its reason, like "Because you rated Piranesi highly". Not feeling it? Dismiss it and the grid refills.</p><span class="tag">explainable, always</span></div>
+      <div class="step"><span class="dot" style="background:var(--grape)"></span><h3>Tell Moody your taste</h3><p>Pick the moods you chase and your genres (each with an emoji), add a few books you loved — or import your Goodreads or StoryGraph library. About a minute, all skippable.</p><span class="tag">one-minute setup</span></div>
+      <div class="step"><span class="dot" style="background:var(--coral)"></span><h3>She starts from what you loved</h3><p>Books you rated highly or finished, the authors you follow, the moods you chase. A book that hits several of those beats one that hits just one.</p><span class="tag">your books, not the crowd's</span></div>
+      <div class="step"><span class="dot" style="background:var(--mint)"></span><h3>See exactly why</h3><p>Every rec carries its reason — "Because you rated Piranesi highly." Not feeling it? Dismiss it and Moody finds another.</p><span class="tag">explainable, always</span></div>
     </div>
   </div>
 </section>
 
 <section class="band" id="features">
   <div class="wrap">
-    <span class="kick">what's in the app today</span>
-    <h2>Tracking that feels like a game. <span class="it">None of the clunk.</span></h2>
-    <div class="split">
-      <div>
-        <ul>
-          <li><span class="e" style="background:color-mix(in srgb,var(--coral) 30%,var(--cream2))">🔥</span><span><b>Daily goal &amp; streaks.</b> Set pages per day, week, month or year. Miss a day and your streak freezes instead of resetting, and days follow <em>your</em> timezone.</span></li>
-          <li><span class="e" style="background:color-mix(in srgb,var(--grape) 30%,var(--cream2))">📈</span><span><b>Recent activity.</b> Pages logged, books started, shelved and finished, with your ratings, all in one feed on Home.</span></li>
-          <li><span class="e" style="background:color-mix(in srgb,var(--sun) 40%,var(--cream2))">📚</span><span><b>Shelves with personality.</b> Currently reading, Want to read (probably won't), Read &amp; obsessed, DNF (we broke up), plus your own shelves with any emoji.</span></li>
-          <li><span class="e" style="background:color-mix(in srgb,var(--mint) 35%,var(--cream2))">✍️</span><span><b>Half-star ratings &amp; reviews,</b> plus a reading log and notes for each book.</span></li>
-          <li><span class="e" style="background:color-mix(in srgb,var(--gold) 35%,var(--cream2))">📊</span><span><b>Stats, free forever.</b> Books, pages, pace and streaks. No paywall.</span></li>
-        </ul>
-      </div>
-      <div class="phone"><img src="screenshots/home-activity.webp" alt="Recent activity feed: read 42 pages of Circe, added The Secret History to Want to read, finished Piranesi with five stars" width="390" height="844" loading="lazy"></div>
+    <span class="kick">what you get</span>
+    <h2>The good parts of every app. <span class="it">None of the clunk.</span></h2>
+    <div class="feats">
+      <div class="feat"><div class="ic" style="background:color-mix(in srgb,var(--grape) 24%,var(--panel))">🎯</div><h3>Recs that explain themselves</h3><p>A reason on every pick — an author you love, a book you rated highly, your mood. No black box, no creepy AI.</p></div>
+      <div class="feat"><div class="ic" style="background:color-mix(in srgb,var(--coral) 24%,var(--panel))">🔥</div><h3>Reading that feels like a game</h3><p>A daily page goal, streaks that freeze instead of resetting when life happens, and a log that remembers every page.</p></div>
+      <div class="feat"><div class="ic" style="background:color-mix(in srgb,var(--sun) 30%,var(--panel))">🌙</div><h3>Mood, not just genre</h3><p>Twelve moods, from 🧸 cozy to 🤪 unhinged. Tell Moody how you want to feel and she finds the book.</p></div>
+      <div class="feat"><div class="ic" style="background:color-mix(in srgb,var(--mint) 26%,var(--panel))">👀</div><h3>New from your authors</h3><p>Moody keeps watch on your favourite writers and flags new and upcoming releases the moment they're announced.</p></div>
+      <div class="feat"><div class="ic" style="background:color-mix(in srgb,var(--gold) 26%,var(--panel))">🕯️</div><h3>A line for today</h3><p>Every morning, one poem excerpt picked for your moods — a small, literary hello before you open your book.</p></div>
+      <div class="feat"><div class="ic" style="background:color-mix(in srgb,var(--grape) 24%,var(--panel))">⚡</div><h3>Fast. Genuinely fast.</h3><p>Pages that load before you blink. Web first, Android next. Speed is a feature.</p></div>
     </div>
   </div>
 </section>
 
-<section class="band paper" id="moody">
+<section class="band paper" id="basics">
   <div class="wrap">
-    <div class="split rev">
-      <div class="phone"><img style="object-position:bottom" src="screenshots/home-recs.webp" alt="Moody's recs grid, each book with a reason such as 'Because you love Donna Tartt'" width="390" height="844" loading="lazy"></div>
-      <div>
-        <span class="kick">moody, your reading ghost</span>
-        <h2>Recs from your taste. <span class="it">With receipts.</span></h2>
-        <ul>
-          <li><span class="e">👻</span><span><b>Picks with a "why".</b> From authors you love, books you rated highly, your genres and your mood.</span></li>
-          <li><span class="e">👀</span><span><b>Coming soon from your authors.</b> Moody watches your favourite writers and flags new and upcoming releases.</span></li>
-          <li><span class="e">🕯️</span><span><b>A line for today.</b> One poem excerpt each morning, picked for your moods.</span></li>
-          <li><span class="e">📖</span><span><b>Read it free.</b> Moody finds free public-domain and library editions where they exist.</span></li>
-          <li><span class="e">🌍</span><span><b>Trending this week.</b> What everyone's reading, minus what's already on your shelves.</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="band" id="basics">
-  <div class="wrap">
-    <span class="kick">the small stuff, sorted</span>
+    <span class="kick">the basics, covered</span>
     <h2>Plus everything a reading app <span class="it">should do.</span></h2>
+    <p class="lead">The smart, explainable recs are why you'd switch. But moodyreader is a full reading app — everything you already expect is here too, just faster and prettier.</p>
     <div class="basics">
-      <div class="basic"><div class="bi">🔄</div><h3>Bring your library</h3><p>Import Goodreads or StoryGraph shelves, ratings and history in one go.</p></div>
-      <div class="basic"><div class="bi">🌗</div><h3>Light or dark</h3><p>Plum-and-candlelight dark mode, or aged-paper light. Your call.</p></div>
-      <div class="basic"><div class="bi">📱</div><h3>Install it like an app</h3><p>Add it to your home screen from the browser. Native apps are on the way.</p></div>
-      <div class="basic"><div class="bi">⚡</div><h3>Fast, genuinely</h3><p>Pages show up instantly, and covers are sized for your screen.</p></div>
+      <div class="basic"><div class="bi">📈</div><h3>Track your progress</h3><p>Log pages in a tap, see how far you are, and look back on everything you've read.</p></div>
+      <div class="basic"><div class="bi">📚</div><h3>Shelves with personality</h3><p>Want to read (probably won't), DNF (we broke up) — or your own shelves with any emoji.</p></div>
+      <div class="basic"><div class="bi">🎯</div><h3>Goals &amp; stats</h3><p>Daily, weekly or yearly goals, streaks and lovely stats — free, always. No paywall.</p></div>
+      <div class="basic"><div class="bi">✍️</div><h3>Reviews &amp; ratings</h3><p>Half-star ratings when you want them, plus reviews and notes for every book.</p></div>
+      <div class="basic"><div class="bi">🔄</div><h3>Bring your library</h3><p>Import your Goodreads or StoryGraph shelves, ratings and history in one move.</p></div>
+      <div class="basic"><div class="bi">👻</div><h3>Your own Moody</h3><p>Nine Moody avatars, from Dark Academia to Self-help Sprout — picked by your taste.</p></div>
       <div class="basic"><div class="bi">👥</div><h3>Book clubs <span class="soon">soon</span></h3><p>Start or join clubs and read together, chapter by chapter.</p></div>
-      <div class="basic"><div class="bi">🔔</div><h3>Friends &amp; feed <span class="soon">soon</span></h3><p>Follow readers and trade recs, with real moderation.</p></div>
-      <div class="basic"><div class="bi">⚠️</div><h3>Content warnings <span class="soon">soon</span></h3><p>Community-sourced and filterable, or turned off entirely.</p></div>
-      <div class="basic"><div class="bi">🤖</div><h3>Android &amp; iOS <span class="soon">soon</span></h3><p>Play Store first, App Store after.</p></div>
+      <div class="basic"><div class="bi">📱</div><h3>Android app <span class="soon">soon</span></h3><p>On the web first, then the Play Store. Founding readers get it first.</p></div>
     </div>
   </div>
 </section>
@@ -376,9 +330,9 @@
   <div class="wrap">
     <span class="kick">find your next read by</span>
     <h2>Mood, not just genre.</h2>
-    <p class="lead">These are the twelve moods in the app. Tap one to see two of Moody's picks:</p>
+    <p class="lead">Twelve moods, from cozy to unhinged. Tap one to see two of Moody's picks:</p>
     <div class="cloud" id="cloud"></div>
-    <span class="cloud-hint">👆 every chip is clickable. Go on, try "unhinged"</span>
+    <span class="cloud-hint">👆 every chip is clickable — go on, try "unhinged"</span>
   </div>
 </section>
 
@@ -386,19 +340,17 @@
   <div class="wrap">
     <div class="box">
       <div id="moodyFinal" class="moody-final" aria-hidden="true"></div>
-      <span class="holo">✦ log the chapter, find the sequel ✦</span>
-      <h2>Your next book is waiting.</h2>
-      <p class="lead">moodyreader is live and free. Sign in with Google, tell Moody what you love, and log your first chapter tonight.</p>
-      <div class="cta-row" style="justify-content:center"><a class="btn big" href="https://moodyreader-app.vercel.app">Open moodyreader →</a></div>
-      <p class="micro" style="margin-top:22px">Want the Android app and founding-reader perks? Leave your email:</p>
-      <form class="signup" id="join-form-2" action="https://buttondown.com/api/emails/embed-subscribe/moodyreader" method="post" target="_blank" novalidate style="margin-top:10px">
+      <span class="holo">✦ founding reader ✦</span>
+      <h2>Be a founding reader.</h2>
+      <p class="lead">We're building moodyreader in the open. We're only taking <b style="color:var(--grape-deep)">100 founding readers</b> to start — first come, first read — with early access, a founder badge, and a say in what Moody learns next.</p>
+      <form class="signup" id="join-form-2" action="https://buttondown.com/api/emails/embed-subscribe/moodyreader" method="post" target="_blank" novalidate>
         <label for="email-foot" style="position:absolute;left:-9999px">Email address</label>
         <input id="email-foot" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@email.com" required>
-        <button class="btn gold" type="submit">Keep me posted</button>
+        <button class="btn" type="submit">Claim my spot</button>
       </form>
       <p class="micro" id="micro2">✦ No spam · Unsubscribe anytime · Your shelves stay yours</p>
       <div class="ok" id="ok-msg-2" role="status" aria-live="polite" style="margin-inline:auto;background:color-mix(in srgb,var(--mint) 20%,var(--cream));color:var(--paper-ink)">
-        <strong>Almost there! 🎉</strong><br>Confirm your email in the tab we just opened and you're on the list.
+        <strong>Almost there! 🎉</strong><br>Finish up in the tab we just opened to lock in your founding spot.
       </div>
     </div>
   </div>
@@ -409,10 +361,10 @@
     <div>
       <div class="logo" aria-label="moodyreader">m<span class="lo d1"></span><span class="lo d2"></span>dy<span class="tail">reader</span></div>
       <p class="manifesto">For people who take books seriously, not solemnly.</p>
-      <p class="disc">Built in the open. Not affiliated with Goodreads, StoryGraph, or Fable. Book data via open sources like Open Library.</p>
+      <p class="disc">A concept in progress — not affiliated with Goodreads, StoryGraph, or Fable. Book data via open sources like Open Library.</p>
       <p class="disc" style="margin-top:8px"><a href="https://buttondown.com/refer/moodyreader" target="_blank" rel="noopener" style="color:var(--muted);text-decoration:underline">Waitlist powered by Buttondown ↗</a></p>
     </div>
-    <div class="foot-links"><a href="#tour">Tour</a><a href="#how">How it works</a><a href="#features">Features</a><a href="https://moodyreader-app.vercel.app">Open the app</a></div>
+    <div class="foot-links"><a href="#how">How it works</a><a href="#features">Features</a><a href="#join">Waitlist</a></div>
   </div>
 </footer>
 
@@ -456,7 +408,7 @@
 
   /* ---- mood picks ---- */
   var G="#6C3BFF",R="#B23A2E",N="#2E4A6E",F="#2E6E52",O="#C9962F",P="#7C3B6E",TE="#1F7A6B";
-  // The app's 12 moods (lib/taste.ts MOODS + MOOD_EMOJI), in the same order.
+  // The app's 12 moods (with their emojis), in the same order as onboarding.
   var MOODS=[
     ["🧸 cozy","#8B6BFF",[
       ["Legends & Lattes","Travis Baldree",[G,O],"An orc opens a coffee shop. Low stakes, big heart, zero peril."],
