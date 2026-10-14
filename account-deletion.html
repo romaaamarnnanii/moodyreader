@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Delete your account — moodyreader</title>
+<meta name="description" content="How to delete your moodyreader account and all associated data.">
+<meta name="robots" content="index,follow">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Fredoka:wght@500;600&display=swap">
+<style>
+  :root{
+    --ground:#150E29; --ground2:#1D1438; --panel:#251B43; --edge:#3A2E5C;
+    --cream:#F4EAD2; --ink:#191026;
+    --text:#EFE6D6; --text-dim:#BEB2D4; --muted:#8B7EA8;
+    --grape:#8B6BFF; --grape-deep:#6C3BFF; --grape-bright:#A88BFF;
+    --gold:#E7B14C; --coral:#FF6B54;
+    --fx:"Bricolage Grotesque",system-ui,sans-serif;
+    --serif:"Newsreader",Georgia,serif;
+    --fy:"Fredoka",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;color:var(--text);font-family:var(--serif);font-size:18px;line-height:1.62;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+    background:
+      radial-gradient(1000px 460px at 82% -6%, color-mix(in srgb,var(--grape) 22%,transparent), transparent 60%),
+      radial-gradient(720px 420px at 4% 10%, color-mix(in srgb,var(--gold) 9%,transparent), transparent 58%),
+      var(--ground);
+  }
+  .wrap{width:100%;max-width:760px;margin-inline:auto;padding:0 20px}
+  nav{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--ground) 82%,transparent);
+      backdrop-filter:blur(12px) saturate(1.3);border-bottom:1px solid var(--edge)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .logo{font-family:var(--fx);font-weight:800;letter-spacing:-.045em;line-height:1;font-size:22px;
+        display:inline-flex;align-items:center;color:var(--cream);white-space:nowrap;text-decoration:none}
+  .logo .lo{display:inline-block;width:.56em;height:.56em;border-radius:50%;margin:0 .035em;
+            border:.06em solid var(--ink);box-shadow:.05em .05em 0 rgba(0,0,0,.45);translate:0 .03em}
+  .logo .d1{background:var(--grape)} .logo .d2{background:var(--coral)} .logo .tail{color:var(--grape-bright)}
+  nav a.back{font-family:var(--fy);font-weight:600;font-size:15px;color:var(--grape-bright);text-decoration:none}
+  nav a.back:hover{color:var(--cream)}
+  header{padding:54px 0 10px}
+  .kick{font-family:var(--fx);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--gold)}
+  h1{font-family:var(--fx);font-weight:800;letter-spacing:-.03em;line-height:1.03;
+     font-size:clamp(38px,6vw,58px);margin:10px 0 6px}
+  main{padding:14px 0 60px}
+  h2{font-family:var(--fx);font-weight:800;letter-spacing:-.02em;font-size:24px;margin:34px 0 10px;color:var(--cream)}
+  p{margin:12px 0;color:var(--text-dim)}
+  a{color:var(--grape-bright)}
+  ul{margin:12px 0;padding-left:22px;color:var(--text-dim)}
+  li{margin:8px 0}
+  strong{color:var(--text);font-weight:600}
+  ol.steps{counter-reset:s;list-style:none;padding:0;margin:14px 0}
+  ol.steps li{position:relative;padding:14px 16px 14px 54px;margin:10px 0;background:var(--panel);
+              border:1px solid var(--edge);border-radius:14px;color:var(--text)}
+  ol.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:14px;top:14px;
+    width:26px;height:26px;border-radius:50%;background:var(--grape-deep);color:#fff;
+    font-family:var(--fy);font-weight:600;font-size:14px;display:grid;place-items:center}
+  .callout{background:color-mix(in srgb,var(--coral) 10%,transparent);border:1px solid color-mix(in srgb,var(--coral) 40%,transparent);
+           border-radius:14px;padding:16px 20px;margin:20px 0}
+  .callout p{margin:0;color:var(--text)}
+  footer{border-top:1px solid var(--edge);padding:28px 0 60px;color:var(--muted);font-family:var(--fy);font-size:14px}
+  footer a{color:var(--grape-bright);text-decoration:none}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="moodyreader">m<span class="lo d1"></span><span class="lo d2"></span>dy<span class="tail">reader</span></a>
+    <a class="back" href="/">← Back to home</a>
+  </div>
+</nav>
+
+<div class="wrap">
+  <header>
+    <div class="kick">Your data</div>
+    <h1>Delete your account</h1>
+  </header>
+
+  <main>
+    <p>You can delete your moodyreader account and all of your data at any time. Here’s how, and exactly what gets removed.</p>
+
+    <h2>Delete it in the app (instant)</h2>
+    <ol class="steps">
+      <li>Open moodyreader and go to <strong>Profile</strong>.</li>
+      <li>Scroll to the <strong>Danger zone</strong> and tap <strong>Delete account</strong>.</li>
+      <li>Type <strong>DELETE</strong> to confirm, then tap <strong>Permanently delete</strong>.</li>
+    </ol>
+    <p>Your account and data are removed immediately, and you’re signed out.</p>
+
+    <h2>Or request it by email</h2>
+    <p>Prefer us to do it? Email <a href="mailto:hello@trymoodyreader.com">hello@trymoodyreader.com</a> from the address on your account and ask us to delete it. We’ll remove your account and confirm, typically within a few days.</p>
+
+    <h2>What gets deleted</h2>
+    <p>Everything tied to your account is permanently deleted:</p>
+    <ul>
+      <li>Your account and sign-in</li>
+      <li>Your profile and reading preferences</li>
+      <li>All shelves, books you’ve tracked, ratings and reviews</li>
+      <li>Your reading history, goals, streaks and stats</li>
+    </ul>
+
+    <div class="callout"><p>Deletion is <strong>permanent and cannot be undone</strong>. We don’t keep a backup of your account data after deletion. Anonymous, aggregate records that don’t identify you are not personal data and are unaffected.</p></div>
+
+    <h2>Questions?</h2>
+    <p>Email <a href="mailto:hello@trymoodyreader.com">hello@trymoodyreader.com</a> — we’re happy to help.</p>
+  </main>
+
+  <footer class="wrap">
+    © <span id="y">2026</span> moodyreader · <a href="/">trymoodyreader.com</a> · <a href="/privacy">Privacy</a>
+  </footer>
+</div>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
